@@ -1,0 +1,68 @@
+
+/*
+*	Styles for list in bugs pages
+*	
+*/
+
+.view{
+	overflow: hidden;
+}
+
+.view .wrapper {
+	overflow: hidden;
+}
+
+.view .info,
+.view .date-block{
+	float: left;
+	min-width: 300px;
+	display: inline-block;
+}
+
+.view .item label,
+.view .item p{
+	display: inline-block;
+}
+
+.view .item p{
+	min-width: 80px;
+}
+
+.view .date-block {
+	float: right;
+	text-align: right;
+}
+
+.view .status {
+	width: 150px;
+	margin: auto;
+	text-align: center;
+}
+
+.view .post {
+	float: left;
+}
+
+.view .buttons {
+	float: right;
+}
+
+.view .buttons a{
+	height: 35px;
+	width: 35px;
+	border: none;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+.view .buttons a:hover{
+	background-position: center; 
+}
+.view #getButton{
+	background-image: url(../images/kded.png);
+}
+.view #completeButton{
+	background-image: url(../images/accept.png);
+}
+.view #sendButton{
+	background-image: url(../images/email.png);
+}
