@@ -12,12 +12,30 @@
 	overflow: hidden;
 }
 
+.view .man{
+	float: left;
+}
+
+.view .man .item{
+	text-align: left;
+	margin: auto;
+	font-size: 14pt;
+
+}
+
 .view .info,
 .view .date-block{
 	float: left;
 	min-width: 300px;
 	display: inline-block;
 }
+
+.view .date-block .item,
+ .view .info .item{
+	float: left;
+	margin-right: 30px;
+}
+
 
 .view .item label,
 .view .item p{
@@ -26,6 +44,11 @@
 
 .view .item p{
 	min-width: 80px;
+}
+
+.view .post label,
+.view .post p{
+	font-size: 12pt;
 }
 
 .view .date-block {
@@ -37,27 +60,35 @@
 	width: 150px;
 	margin: auto;
 	text-align: center;
+	overflow: hidden;
 }
 
-.view .post {
-	float: left;
+.view .imageStatus {
+	color: #006dcc
 }
+
+.view .action {
+	float: right;
+	text-align: right;
+}
+
 
 .view .buttons {
 	float: right;
 }
 
 .view .buttons a{
-	height: 35px;
-	width: 35px;
-	border: none;
+	/*height: 35px;
+	width: 35px;*/
+	/*border: none;
 	background-repeat: no-repeat;
-	background-position: center; 
+	background-position: center; */
+	margin-right: 5px;
 }
-.view .buttons a:hover{
+/*.view .buttons a:hover{
 	background-position: center; 
-}
-.view #getButton{
+}*/
+/*.view #getButton{
 	background-image: url(../images/kded.png);
 }
 .view #completeButton{
@@ -65,4 +96,7 @@
 }
 .view #sendButton{
 	background-image: url(../images/email.png);
-}
+}*/
+
+
+

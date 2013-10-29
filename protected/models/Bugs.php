@@ -44,7 +44,7 @@ class Bugs extends CActiveRecord
 		$condition = '';
 		$ord = '';
 		if ($currentAction != 'archive'){
-		 	$condition = 'status < 3';
+		 	$condition = 'status < 4';
 		 	$ord = 'status asc ,receive_date asc';
 		 	if($currentAction == 'myBugs'){
 		 		if(Yii::app()->authManager->isAssigned('Employee',Yii::app()->user->id)){
@@ -54,7 +54,7 @@ class Bugs extends CActiveRecord
 			}
 		}
 		else{
-			$condition = 'status = 3';
+			$condition = 'status = 4';
 			$ord = 'receive_date desc';
 		}
 
@@ -66,31 +66,31 @@ class Bugs extends CActiveRecord
 		    ->order($ord)
 		    ->text;
 
-			$count=count(Yii::app()->db->createCommand($query)->queryAll());
-			$dataProvider = new CSqlDataProvider($query, array(
+		$count=count(Yii::app()->db->createCommand($query)->queryAll());
+		$dataProvider = new CSqlDataProvider($query, array(
 			'totalItemCount'=>$count,
 			'keyField'=>'id',
 			'pagination'=>array(
-			'pageSize'=>7,
+				'pageSize'=>7,
 			 ),
-			));
+		));
 
 			 return $dataProvider;
 	}
 
 	
 	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+	 {
+	 	return parent::model($className);
+	 }
 
 	public function getStatus($status)
 	{
-	    $data = array(0=>"Ожидание", 1=>"В процессе", 2=>"Завершено", 3=>"Архив");
+	    $data = array(0=>"Ожидание", 1=>"В процессе", 2=>"Завершено", 3=>"Проверка", 4=>"Архив");
 	    return $data[$status];
 	}
 
-	public function getFullFio($id){
+	public static function getFullFio($id){
 		if (!is_null($id)){
 			$query = Yii::app()->db->createCommand()
 		    ->select('first_name, last_name')

@@ -8,9 +8,11 @@
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/themes/font-awesome/css/font-awesome.min.css">
 	<!--[if lt IE 8]>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
+
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
@@ -40,6 +42,9 @@ $cs
     ->registerCoreScript('jquery',CClientScript::POS_END)
     ->registerCoreScript('jquery.ui',CClientScript::POS_END)
     ->registerScriptFile($themePath.'/assets/js/bootstrap.min.js',CClientScript::POS_END)
+
+    ->registerScriptFile(Yii::app()->baseUrl.'/js/extimgupl.js',CClientScript::POS_END)
+    ->registerScriptFile(Yii::app()->baseUrl.'/js/extfupl.js',CClientScript::POS_END)
  
     ->registerScript('tooltip',
         "$('[data-toggle=\"tooltip\"]').tooltip();

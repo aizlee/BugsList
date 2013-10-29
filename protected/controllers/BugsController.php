@@ -22,7 +22,8 @@ class BugsController extends RController
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','myBugs','completeBug','getBug','archive','sendMail','admin',),
+				'actions'=>array('create','myBugs','completeBug','getBug','archive','sendMail','admin',
+					 'addToArchive', 'returnToWork', 'imageUpload', 'imageList', 'fileUpload'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -54,7 +55,7 @@ class BugsController extends RController
 		{
 			$model->attributes=$_POST['Bugs'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('index'));	
 		}
 
 		$this->render('create',array(
@@ -84,22 +85,20 @@ class BugsController extends RController
 	public function actionGetBug($id)
 	{
 		$model=$this->loadModel($id);
-
 		$model->id_employee = Yii::app()->user->id;
 		$model->start_date = date("Y-m-d");
 		$model->status = 1;
 		if ($model->save()) 
-			 $this->redirect(array('view','id'=>$model->id));		
+			 $this->redirect(array('index'));		
 	}
 
 	public function actionCompleteBug($id)
 	{
 		$model=$this->loadModel($id);
-
 		$model->complete_date = date("Y-m-d");
 		$model->status = 2;
 		if ($model->save()) 
-			 $this->redirect(array('myBugs'));
+		 	 $this->redirect(array('myBugs'));
 	}
 
 	
@@ -162,6 +161,22 @@ class BugsController extends RController
 			 $this->redirect(array('myBugs'));
 	}   
 
+	public function actionAddToArchive($id) { 
+		$model=$this->loadModel($id);
+	    $model->status = 4;
+	    if ($model->save()) 
+			 $this->redirect(array('myBugs'));
+	}   
+
+	public function actionReturnToWork($id) { 
+	
+		$model=$this->loadModel($id);
+	    $model->status = 1;
+	    $model->complete_date = new CDbExpression('NULL');
+	    if ($model->save()) 
+			 $this->redirect(array('myBugs'));
+	}   
+
 	public function loadModel($id)
 	{
 		$model=Bugs::model()->findByPk($id);
@@ -178,4 +193,24 @@ class BugsController extends RController
 			Yii::app()->end();
 		}
 	}
+
+
+ 	public function actions()
+    {
+        return array(
+            'fileUpload'=>array(
+                'class'=>'ext.imperaviRedactorWidget.actions.FileUpload',
+                'uploadCreate'=>true,
+            ),
+            'imageUpload'=>array(
+                'class'=>'ext.imperaviRedactorWidget.actions.ImageUpload',
+                'uploadCreate'=>true,
+                 'permissions'=>0777,
+            ),
+            'imageList'=>array(
+                'class'=>'ext.imperaviRedactorWidget.actions.ImageList',
+            ),
+        );
+    }
+
 }

@@ -5,12 +5,27 @@
 $this->breadcrumbs=array(
 	'Bugs',
 );
+if (Yii::app()->controller->getAction()->getId()=='index'){ 
+	$this->menu=array(
+		array('label'=>'Create Bugs', 'url'=>array('create')),
+		array('label'=>'Мои баги', 'url'=>array('myBugs')),
+		array('label'=>'Архив багов', 'url'=>array('archive')),
+	);
+}
 
-$this->menu=array(
-	array('label'=>'Create Bugs', 'url'=>array('create')),
-	array('label'=>'List Bugs', 'url'=>array('index')),
-	array('label'=>'Мои баги', 'url'=>array('myBugs')),
-);
+if (Yii::app()->controller->getAction()->getId()=='myBugs'){
+	$this->menu=array(
+		array('label'=>'Create Bugs', 'url'=>array('create')),
+		array('label'=>'Список багов', 'url'=>array('index')),
+	);
+}
+
+if (Yii::app()->controller->getAction()->getId()=='archive'){
+	$this->menu=array(
+		array('label'=>'Список активных багов', 'url'=>array('index')),
+		array('label'=>'Мои баги', 'url'=>array('myBugs')),
+	);
+}
 ?>
 
 <?php switch(Yii::app()->controller->getAction()->getId()): 

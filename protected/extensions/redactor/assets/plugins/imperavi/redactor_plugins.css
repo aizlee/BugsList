@@ -1,0 +1,38 @@
+/* 
+    Document   : redactor_plugins
+    Created on : 19.12.2012, 4:46:25
+    Author     : DonnaInsolita
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#redactor_imagewl_box {
+	height: 270px;
+	overflow: auto;
+	margin-bottom: 10px;
+}
+#redactor_file_box {
+	height: 270px;
+	overflow: auto;
+	margin-bottom: 10px;
+}
+#redactor_imagewl_box_select {
+	display: block;
+	width: 200px;
+	margin-bottom: 15px;
+}
+#redactor_imagewl_box img {
+	margin-right: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	max-width: 100px;
+}
+ul#redactor_file_box_list li{
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+    border-bottom: 2 px solid #000;
+}
+#redactor_file_box_list li a,.uplfile{
+    padding: 5px 2px 5px 20px;
+    background: none;
+}

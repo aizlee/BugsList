@@ -20,24 +20,29 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-                'application.extensions.*',
-                'application.modules.user.models.*',
-                'application.modules.user.components.*',
-                'application.modules.rights.*',
-                'application.modules.rights.models.*',
-                'application.modules.rights.components.*',
-                'application.modules.bootstrap.components.*',
-                'application.modules.bootstrap.*',
-                'application.modules.bootstrap.widgets.*',
-                'application.modules.bootstrap.models.*',
-                'application.modules.bootstrap.helpers.*',
-                'application.modules.bootstrap.extensions.*',
-                'application.modules.bootstrap.assets.*'
+        'application.extensions.*',
+        'application.extensions.imperaviRedactorWidget*',
+        'application.modules.user.models.*',
+        'application.modules.user.components.*',
+        'application.modules.rights.*',
+        	'application.modules.rights.models.*',
+        	'application.modules.rights.components.*',
+        'application.modules.bootstrap.*',
+	        'application.modules.bootstrap.components.*',
+	        'application.modules.bootstrap.widgets.*',
+	        'application.modules.bootstrap.models.*',
+	        'application.modules.bootstrap.helpers.*',
+	        'application.modules.bootstrap.extensions.*',
+
+        'application.components.validators.*',
+        'application.modules.files.*',
+			'application.modules.files.components.*',
 	),
        
         'theme'=>'classic',
 	'modules'=>array(
 		'rights',
+		'files',
 		// uncomment the following to enable the Gii tool
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
@@ -49,7 +54,7 @@ return array(
 			//'ipFilters'=>array('127.0.0.1','::1'),
 		),
                 'bootstrap' => array(
-                    'class' => 'bootstrap.BootStrapModule'
+                    'class' => 'bootstrap.BootStrapModule',
                 ),
                                 
                 'user'=>array(
@@ -88,6 +93,22 @@ return array(
 
 	// application components
 	'components'=>array(
+
+	 'widgetFactory' => array(
+	            'widgets' => array(
+	                'ERedactorWidget' => array(
+	                    'options'=>array(
+	                        'lang'=>'ru',
+	                        'buttons'=>array(
+	                            'formatting', '|', 'bold', 'italic', 'deleted', '|',
+	                            'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
+	                            'image', 'video', 'link', '|', 'html',
+	                        ),
+	                    ),
+	                ),
+	            ),
+	        ),
+
 		'user'=>array(
 			// enable cookie-based authentication
                         'class' => 'RWebUser',
