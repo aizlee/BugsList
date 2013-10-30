@@ -33,13 +33,9 @@ return array(
 	        'application.modules.bootstrap.models.*',
 	        'application.modules.bootstrap.helpers.*',
 	        'application.modules.bootstrap.extensions.*',
-
-        'application.components.validators.*',
-        'application.modules.files.*',
-			'application.modules.files.components.*',
 	),
        
-        'theme'=>'classic',
+       
 	'modules'=>array(
 		'rights',
 		'files',

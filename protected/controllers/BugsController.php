@@ -23,7 +23,7 @@ class BugsController extends RController
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','myBugs','completeBug','getBug','archive','sendMail','admin',
-					 'addToArchive', 'returnToWork', 'imageUpload', 'imageList', 'fileUpload'),
+					 'addToArchive', 'returnToWork', 'imageUpload', 'imageList', 'fileUpload', 'addClient'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -47,19 +47,41 @@ class BugsController extends RController
 	public function actionCreate()
 	{
 		$model=new Bugs;
-
+		$add=new Clients;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		$model->receive_date=date('Y-m-d');
 		if(isset($_POST['Bugs']))
 		{
 			$model->attributes=$_POST['Bugs'];
+			if (!empty($model->id_client)){
+				$temp=Clients::model()->findByAttributes(array('email'=>$model->id_client));
+				$model->id_client=$temp->id;
+			}
+			$model->id_creator = Yii::app()->user->id;
+
 			if($model->save())
 				$this->redirect(array('index'));	
 		}
-
+		
+		
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model
+		));
+	}
+
+	public function actionAddClient()
+	{
+		if(isset($_POST['Clients']))
+		{
+			$add->attributes=$_POST['Clients'];
+
+			if($add->save())
+				$this->redirect(array('create'));	
+		}
+
+		$this->render('addClient',array(
+			'add'=>$add,
 		));
 	}
 
@@ -154,8 +176,14 @@ class BugsController extends RController
 	public function actionSendMail() { 
 		$temp = $_GET['id'];
 		$model=$this->loadModel($temp);
-		$message='Уважаемый(ая) ' . Bugs::getFullFio($model->id_client) . ', ваша заявка от ' . $model->receive_date  . ' - закрыта. Ошибки устранены.';
-	    mail(Bugs::getEmail($model->id_client),'Ошибка исправлена', $message);
+		if (!empty($model->id_client)){
+			$message='Уважаемый(ая) ' . Bugs::getFullFio($model->id_client) . ', ваша заявка от ' . $model->receive_date  . ' - закрыта. Ошибки устранены.';
+		    mail(Bugs::getEmail($model->id_client),'Ошибка исправлена', $message);
+		}
+		else{
+			$message= Bugs::getUserFullFio($model->id_creator) . ', баг от ' . $model->receive_date  . ' - закрыт. Ошибки устранены.';
+		    mail(Bugs::getCreatorEmail($model->id_creator),'Ошибка исправлена', $message);
+		}
 	    $model->status = 3;
 	    if ($model->save()) 
 			 $this->redirect(array('myBugs'));
@@ -193,7 +221,6 @@ class BugsController extends RController
 			Yii::app()->end();
 		}
 	}
-
 
  	public function actions()
     {

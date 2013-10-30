@@ -13,7 +13,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
 
-
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
@@ -24,39 +23,6 @@
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	<?php Yii::app()->bootstrap->register();?>
-	<?php
-$cs = Yii::app()->clientScript;
-$themePath = Yii::app()->theme->baseUrl;
- 
-/**
- * StyleSHeets
- */
-$cs
-    ->registerCssFile($themePath.'/assets/css/bootstrap.css')
-    ->registerCssFile($themePath.'/assets/css/bootstrap-theme.css');
- 
-/**
- * JavaScripts
- */
-$cs
-    ->registerCoreScript('jquery',CClientScript::POS_END)
-    ->registerCoreScript('jquery.ui',CClientScript::POS_END)
-    ->registerScriptFile($themePath.'/assets/js/bootstrap.min.js',CClientScript::POS_END)
-
-    ->registerScriptFile(Yii::app()->baseUrl.'/js/extimgupl.js',CClientScript::POS_END)
-    ->registerScriptFile(Yii::app()->baseUrl.'/js/extfupl.js',CClientScript::POS_END)
- 
-    ->registerScript('tooltip',
-        "$('[data-toggle=\"tooltip\"]').tooltip();
-        $('[data-toggle=\"popover\"]').tooltip()"
-        ,CClientScript::POS_READY);
- 
-?>
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-    <script src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/html5shiv.js"></script>
-    <script src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/respond.min.js"></script>
-<![endif]-->
 
 	
 </head>
@@ -70,11 +36,12 @@ $cs
 	</div><!-- header -->
 
 	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
+		<?php $this->widget('bootstrap.widgets.TbMenu',array(
+			'type' => 'tabs',
+            'stacked' => false,
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Bugs', 'url'=>array('/bugs/index')),
 				array('label'=>'Архив', 'url'=>array('/bugs/archive')),
 				array('label'=>'Rights', 'url'=>array('/rights')),
@@ -87,11 +54,6 @@ $cs
 			),
 		)); ?>
 	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
 
 	<?php echo $content; ?>
 

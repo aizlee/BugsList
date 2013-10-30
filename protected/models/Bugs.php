@@ -28,9 +28,10 @@ class Bugs extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('address, receive_date, post', 'required'),
-			array('id_employee, id_client, status', 'numerical', 'integerOnly'=>true),
+			array('id_employee, status', 'numerical', 'integerOnly'=>true),
 			array('address', 'length', 'max'=>128),
 			array('post', 'length', 'max'=>256),
+			array('id_client', 'length', 'max'=>256),
 			array('start_date, complete_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -94,6 +95,19 @@ class Bugs extends CActiveRecord
 		if (!is_null($id)){
 			$query = Yii::app()->db->createCommand()
 		    ->select('first_name, last_name')
+		    ->from('clients')
+			->where('id = ' . $id)
+		    ->queryRow();
+		    $output = $query['last_name'] . ' ' . $query['first_name'];
+			return $output;
+	    }
+	    return 'Исполнитель не назначен';
+	}
+
+	public static function getUserFullFio($id){
+		if (!is_null($id)){
+			$query = Yii::app()->db->createCommand()
+		    ->select('first_name, last_name')
 		    ->from('tbl_profiles')
 			->where('user_id = ' . $id)
 		    ->queryRow();
@@ -107,10 +121,28 @@ class Bugs extends CActiveRecord
 	{
 	   $query = Yii::app()->db->createCommand()
 		    ->select('email')
+		    ->from('clients')
+			->where('id = ' . $id)
+		    ->queryRow();
+			return $query['email'];
+	}
+
+	public function getCreatorEmail($id)
+	{
+	   $query = Yii::app()->db->createCommand()
+		    ->select('email')
 		    ->from('tbl_users')
 			->where('id = ' . $id)
 		    ->queryRow();
 			return $query['email'];
 	}
 
+	public function getClient()
+	{
+	   $query = Yii::app()->db->createCommand()
+		    ->select('email')
+		    ->from('clients')
+		    ->queryColumn();
+			return $query;
+	}
 }

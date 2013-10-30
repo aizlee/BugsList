@@ -2,12 +2,10 @@
 /* @var $this BugsController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Bugs',
-);
+
 if (Yii::app()->controller->getAction()->getId()=='index'){ 
 	$this->menu=array(
-		array('label'=>'Create Bugs', 'url'=>array('create')),
+		array('label'=>'Create Bugs', 'url'=>array('create', 'addClient')),
 		array('label'=>'Мои баги', 'url'=>array('myBugs')),
 		array('label'=>'Архив багов', 'url'=>array('archive')),
 	);
@@ -15,7 +13,7 @@ if (Yii::app()->controller->getAction()->getId()=='index'){
 
 if (Yii::app()->controller->getAction()->getId()=='myBugs'){
 	$this->menu=array(
-		array('label'=>'Create Bugs', 'url'=>array('create')),
+		array('label'=>'Create Bugs', 'url'=>array('create', 'addClient')),
 		array('label'=>'Список багов', 'url'=>array('index')),
 	);
 }
@@ -45,7 +43,7 @@ if (Yii::app()->controller->getAction()->getId()=='archive'){
 
 <?php
 	//var_dump($dataProvider);
-	$this->widget('zii.widgets.CListView', array(
+	$this->widget('bootstrap.widgets.TbListView', array(
 		'dataProvider'=>$dataProvider,
 		'itemView'=>'_view',
 		 'ajaxUpdate'=>false,

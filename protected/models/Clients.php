@@ -6,7 +6,8 @@
  * The followings are the available columns in table 'clients':
  * @property integer $id
  * @property string $email
- * @property string $name
+ * @property string $last_name
+ * @property string $first_name
  */
 class Clients extends CActiveRecord
 {
@@ -26,11 +27,11 @@ class Clients extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('email, name', 'required'),
-			array('email, name', 'length', 'max'=>128),
+			array('email, last_name, first_name', 'required'),
+			array('email, last_name, first_name', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, email, name', 'safe', 'on'=>'search'),
+			array('id, email, last_name, first_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -42,7 +43,6 @@ class Clients extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'clients' => array(self::HAS_MANY, 'Bugs', 'id'),
 		);
 	}
 
@@ -54,7 +54,8 @@ class Clients extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'email' => 'Email',
-			'name' => 'ФИО',
+			'last_name' => 'Фамилия',
+			'first_name' => 'Имя',
 		);
 	}
 
@@ -78,26 +79,14 @@ class Clients extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('email',$this->email,true);
-		$criteria->compare('name',$this->name,true);
+		$criteria->compare('last_name',$this->last_name,true);
+		$criteria->compare('first_name',$this->first_name,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
-	 public function getClient($keyword,$limit=20)
-        {
-                $models=$this->findAll(array(
-                        'condition'=>'email LIKE :keyword',
-                        'order'=>'email',
-                        'limit'=>$limit,
-                        'params'=>array(':keyword'=>"%$keyword%")
-                ));
-                $suggest=array();
-                foreach($models as $model)
-                        $suggest[]=$model->name.' - '.$model->code.' - '.$model->call_code.'|'.$model->name.'|'.$model->code.'|'.$model->call_code;
-                return $suggest;
-        }
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

@@ -7,7 +7,7 @@ Yii::import('ext.imperaviRedactorWidget.ImperaviRedactorWidget');
 
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'bugs-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
@@ -26,7 +26,18 @@ Yii::import('ext.imperaviRedactorWidget.ImperaviRedactorWidget');
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_client'); ?>
-		<?php echo $form->dropDownList($model,'id_client', CHtml::listData(User::model()->findAll(), 'id', 'email'));?>
+		<?php $form->widget('bootstrap.widgets.TbTypeahead', array(
+		    'name'=>'typeahead',
+		    'model'=>$model,
+    		'attribute'=>'id_client',
+		    'options'=>array(
+		        'source'=>Bugs::getClient(),
+		        'items'=>4,
+		        'matcher'=>"js:function(item) {
+		            return ~item.toLowerCase().indexOf(this.query.toLowerCase());
+		        }",
+		    ),
+		)); ?>
 		<?php echo $form->error($model,'id_client'); ?>
 	</div>
 
@@ -83,3 +94,5 @@ Yii::import('ext.imperaviRedactorWidget.ImperaviRedactorWidget');
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+

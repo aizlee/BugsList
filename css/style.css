@@ -51,6 +51,10 @@
 	font-size: 12pt;
 }
 
+.view .post {
+	margin: 20px 0;
+}
+
 .view .date-block {
 	float: right;
 	text-align: right;
@@ -65,6 +69,14 @@
 
 .view .imageStatus {
 	color: #006dcc
+}
+
+.view .red {
+	color: red;
+}
+
+.view .yellow {
+	color: orange;
 }
 
 .view .action {
@@ -84,6 +96,10 @@
 	background-repeat: no-repeat;
 	background-position: center; */
 	margin-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 11pt;
+
 }
 /*.view .buttons a:hover{
 	background-position: center; 

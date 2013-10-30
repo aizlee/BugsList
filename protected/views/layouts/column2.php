@@ -1,17 +1,18 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
-<div class="col-md-9">
+<div class="span-20">
 	<div id="content">
 		<?php echo $content; ?>
 	</div><!-- content -->
 </div>
-<div class="col-md-3">
+<div class="span-5">
 	<div id="sidebar">
 	<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'Operations',
 		));
 		$this->widget('bootstrap.widgets.TbMenu', array(
+			'type'=>'pills',
 			'items'=>$this->menu,
 			'htmlOptions'=>array('class'=>'operations'),
 		));

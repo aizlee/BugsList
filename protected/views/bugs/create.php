@@ -2,10 +2,6 @@
 /* @var $this BugsController */
 /* @var $model Bugs */
 
-$this->breadcrumbs=array(
-	'Bugs'=>array('index'),
-	'Create',
-);
 
 $this->menu=array(
 	array('label'=>'List Bugs', 'url'=>array('index')),
