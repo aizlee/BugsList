@@ -3328,3 +3328,553 @@ Stack trace:
 REQUEST_URI=/buglist/index.php?r=bugs/index
 HTTP_REFERER=http://localhost/buglist/index.php?r=bugs/archive
 ---
+2013/10/30 16:11:18 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yiiroot/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yiiroot/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(RWebUser), 'You are not aut...')
+#1 /var/www/yiiroot/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yiiroot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yiiroot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yiiroot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yiiroot/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('')
+#8 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('rights')
+#9 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/buglist/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/buglist/index.php?r=rights
+HTTP_REFERER=http://localhost/buglist/index.php?r=user/profile
+---
+2013/10/31 14:26:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yiiroot/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yiiroot/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(RWebUser), 'You are not aut...')
+#1 /var/www/yiiroot/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yiiroot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yiiroot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yiiroot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yiiroot/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#7 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#8 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('bugs/quote')
+#9 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/buglist/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/buglist/index.php?r=bugs/quote
+---
+2013/10/31 15:20:28 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'BugsList.Bugs' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `Bugs`.
+in /var/www/buglist/protected/controllers/StockController.php (20)
+in /var/www/buglist/index.php (13)
+2013/10/31 15:20:28 [error] [application] exception 'CDbException' with message 'The table "Bugs" for active record class "Bugs" cannot be found in the database.' in /var/www/yiiroot/framework/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Bugs))
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1350): CActiveRecord->getTableSchema()
+#3 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1470): CActiveRecord->query(Object(CDbCriteria), true)
+#4 /var/www/buglist/protected/controllers/StockController.php(20): CActiveRecord->findAll()
+#5 [internal function]: StockController->getBugs()
+#6 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#7 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#8 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#9 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#10 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#11 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#12 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#13 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#14 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/buglist/index.php(13): CApplication->run()
+#16 {main}
+in /var/www/buglist/index.php (13)
+2013/10/31 15:40:35 [error] [php] Missing argument 1 for StockController::loadModel() (/var/www/buglist/protected/controllers/StockController.php:17)
+Stack trace:
+#0 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#1 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#2 /var/www/yiiroot/framework/web/CController.php(308): CWebServiceAction->runWithParams()
+#3 /var/www/yiiroot/framework/web/CController.php(286): StockController->runAction()
+#4 /var/www/yiiroot/framework/web/CController.php(265): StockController->runActionWithFilters()
+#5 /var/www/yiiroot/framework/web/CWebApplication.php(282): StockController->run()
+#6 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/buglist/index.php(13): CWebApplication->run()
+REQUEST_URI=/buglist/index.php?r=stock/quote&ws=1
+in /var/www/buglist/protected/controllers/StockController.php (17)
+in /var/www/buglist/index.php (13)
+2013/11/01 08:31:47 [error] [php] class_exists() expects parameter 1 to be string, array given (/var/www/yiiroot/framework/YiiBase.php:195)
+Stack trace:
+#0 /var/www/yiiroot/framework/web/CController.php(417): StockController->createActionFromMap()
+#1 /var/www/yiiroot/framework/web/CController.php(259): StockController->createAction()
+#2 /var/www/yiiroot/framework/web/CWebApplication.php(282): StockController->run()
+#3 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/buglist/index.php(13): CWebApplication->run()
+REQUEST_URI=/buglist/index.php?r=stock/quote
+in /var/www/buglist/index.php (13)
+2013/11/01 09:46:03 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:46:03 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:46:04 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:46:17 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:46:26 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:46:35 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:46:44 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:46:53 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:46:58 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:47:09 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:47:11 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:48:39 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:48:47 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:48:59 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:49:04 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:49:18 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:49:22 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:50:28 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 09:50:47 [warning] [application] Failed to set unsafe attribute "verifyCode" of "RegistrationForm".
+in /var/www/buglist/protected/modules/user/controllers/RegistrationController.php (30)
+in /var/www/buglist/index.php (13)
+2013/11/01 11:07:23 [error] [php] Undefined variable: command (/var/www/buglist/protected/controllers/StockController.php:40)
+Stack trace:
+#0 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#1 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#2 /var/www/yiiroot/framework/web/CController.php(308): CWebServiceAction->runWithParams()
+#3 /var/www/yiiroot/framework/web/CController.php(286): StockController->runAction()
+#4 /var/www/yiiroot/framework/web/CController.php(265): StockController->runActionWithFilters()
+#5 /var/www/yiiroot/framework/web/CWebApplication.php(282): StockController->run()
+#6 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/buglist/index.php(13): CWebApplication->run()
+REQUEST_URI=/buglist/index.php?r=stock/quote&ws=1
+in /var/www/buglist/protected/controllers/StockController.php (40)
+in /var/www/buglist/index.php (13)
+2013/11/01 11:07:23 [error] [php] Undefined variable: command (/var/www/buglist/protected/controllers/StockController.php:40)
+Stack trace:
+#0 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#1 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#2 /var/www/yiiroot/framework/web/CController.php(308): CWebServiceAction->runWithParams()
+#3 /var/www/yiiroot/framework/web/CController.php(286): StockController->runAction()
+#4 /var/www/yiiroot/framework/web/CController.php(265): StockController->runActionWithFilters()
+#5 /var/www/yiiroot/framework/web/CWebApplication.php(282): StockController->run()
+#6 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/buglist/index.php(13): CWebApplication->run()
+REQUEST_URI=/buglist/index.php?r=stock/quote&ws=1
+in /var/www/buglist/protected/controllers/StockController.php (40)
+in /var/www/buglist/index.php (13)
+2013/11/01 11:10:42 [error] [php] Undefined variable: command (/var/www/buglist/protected/controllers/StockController.php:40)
+Stack trace:
+#0 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#1 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#2 /var/www/yiiroot/framework/web/CController.php(308): CWebServiceAction->runWithParams()
+#3 /var/www/yiiroot/framework/web/CController.php(286): StockController->runAction()
+#4 /var/www/yiiroot/framework/web/CController.php(265): StockController->runActionWithFilters()
+#5 /var/www/yiiroot/framework/web/CWebApplication.php(282): StockController->run()
+#6 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/buglist/index.php(13): CWebApplication->run()
+REQUEST_URI=/buglist/index.php?r=stock/quote&ws=1
+in /var/www/buglist/protected/controllers/StockController.php (40)
+in /var/www/buglist/index.php (13)
+2013/11/01 11:16:31 [error] [php] Undefined variable: command (/var/www/buglist/protected/controllers/StockController.php:40)
+Stack trace:
+#0 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#1 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#2 /var/www/yiiroot/framework/web/CController.php(308): CWebServiceAction->runWithParams()
+#3 /var/www/yiiroot/framework/web/CController.php(286): StockController->runAction()
+#4 /var/www/yiiroot/framework/web/CController.php(265): StockController->runActionWithFilters()
+#5 /var/www/yiiroot/framework/web/CWebApplication.php(282): StockController->run()
+#6 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/buglist/index.php(13): CWebApplication->run()
+REQUEST_URI=/buglist/index.php?r=stock/quote&ws=1
+in /var/www/buglist/protected/controllers/StockController.php (40)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:40:14 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:40:14 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:40:14 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:42:56 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:42:56 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:42:56 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:44:33 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:44:33 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:44:33 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:44:39 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:44:39 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:44:39 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:46:23 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:46:23 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:46:23 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:47:43 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:47:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:47:43 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:47:51 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:47:51 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:47:51 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:48:35 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:48:35 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:48:35 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:50:12 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:50:12 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:50:12 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:50:28 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:50:28 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:50:28 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:51:46 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:51:46 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7).
+in /var/www/buglist/protected/controllers/StockController.php (69)
+in /var/www/buglist/index.php (13)
+2013/11/01 13:51:46 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(69): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 13:53:08 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 14:00:06 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 14:00:06 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`, `id_creator`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8).
+in /var/www/buglist/protected/controllers/StockController.php (70)
+in /var/www/buglist/index.php (13)
+2013/11/01 14:00:06 [error] [application] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`BugsList`.`bugs`, CONSTRAINT `bugs_ibfk_3` FOREIGN KEY (`id_creator`) REFERENCES `tbl_profiles` (`user_id`)). The SQL statement executed was: INSERT INTO `bugs` (`status`, `id_employee`, `id_client`, `address`, `receive_date`, `post`, `start_date`, `complete_date`, `id_creator`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8)' in /var/www/yiiroot/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(1077): CDbCommand->execute()
+#1 /var/www/yiiroot/framework/db/ar/CActiveRecord.php(806): CActiveRecord->insert(NULL)
+#2 /var/www/buglist/protected/controllers/StockController.php(70): CActiveRecord->save()
+#3 [internal function]: StockController->addBug(Array)
+#4 /var/www/yiiroot/framework/web/services/CWebService.php(190): SoapServer->handle()
+#5 /var/www/yiiroot/framework/web/services/CWebServiceAction.php(103): CWebService->run()
+#6 /var/www/yiiroot/framework/web/actions/CAction.php(76): CWebServiceAction->run()
+#7 /var/www/yiiroot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#8 /var/www/yiiroot/framework/web/CController.php(286): CController->runAction(Object(CWebServiceAction))
+#9 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CWebServiceAction), Array)
+#10 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('quote')
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('stock/quote')
+#12 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/buglist/index.php(13): CApplication->run()
+#14 {main}
+in /var/www/buglist/index.php (13)
+2013/11/01 14:12:13 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 14:13:35 [warning] [application] Failed to set unsafe attribute "id_creator" of "Bugs".
+in /var/www/buglist/protected/controllers/StockController.php (68)
+in /var/www/buglist/index.php (13)
+2013/11/01 15:07:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bugs/index".' in /var/www/yiiroot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('bugs/index')
+#1 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/buglist/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/buglist/index.php?r=bugs/index
+HTTP_REFERER=http://localhost/buglist/index.php?r=bugs/archive
+---
+2013/11/01 15:09:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bugs/index".' in /var/www/yiiroot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('bugs/index')
+#1 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/buglist/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/buglist/index.php?r=bugs/index
+HTTP_REFERER=http://localhost/buglist/index.php?r=bugs/index
+---
+2013/11/01 15:09:30 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/buglist/protected/modules/rights/components/RController.php:62
+Stack trace:
+#0 /var/www/buglist/protected/modules/rights/components/RightsFilter.php(57): RController->accessDenied()
+#1 /var/www/yiiroot/framework/web/filters/CFilter.php(38): RightsFilter->preFilter(Object(CFilterChain))
+#2 /var/www/buglist/protected/modules/rights/components/RController.php(36): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yiiroot/framework/web/filters/CInlineFilter.php(58): RController->filterRights(Object(CFilterChain))
+#4 /var/www/yiiroot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yiiroot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yiiroot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /var/www/yiiroot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /var/www/yiiroot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /var/www/yiiroot/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('index')
+#12 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('tickets/index')
+#13 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/buglist/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/buglist/index.php?r=tickets/index
+HTTP_REFERER=http://localhost/buglist/index.php?r=bugs/index
+---
+2013/11/01 15:09:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/buglist/protected/modules/rights/components/RController.php:62
+Stack trace:
+#0 /var/www/buglist/protected/modules/rights/components/RightsFilter.php(57): RController->accessDenied()
+#1 /var/www/yiiroot/framework/web/filters/CFilter.php(38): RightsFilter->preFilter(Object(CFilterChain))
+#2 /var/www/buglist/protected/modules/rights/components/RController.php(36): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yiiroot/framework/web/filters/CInlineFilter.php(58): RController->filterRights(Object(CFilterChain))
+#4 /var/www/yiiroot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yiiroot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yiiroot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /var/www/yiiroot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /var/www/yiiroot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /var/www/yiiroot/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yiiroot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/yiiroot/framework/web/CWebApplication.php(282): CController->run('index')
+#12 /var/www/yiiroot/framework/web/CWebApplication.php(141): CWebApplication->runController('tickets/index')
+#13 /var/www/yiiroot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/buglist/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/buglist/index.php?r=tickets/index
+HTTP_REFERER=http://localhost/buglist/index.php
+---

@@ -134,7 +134,7 @@ return array(
 		*/
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=BugsList',
+			'connectionString' => 'mysql:host=localhost;dbname=Tickets',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '123',

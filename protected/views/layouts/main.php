@@ -42,8 +42,8 @@
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Bugs', 'url'=>array('/bugs/index')),
-				array('label'=>'Архив', 'url'=>array('/bugs/archive')),
+				array('label'=>'Bugs', 'url'=>array('/tickets/index')),
+				array('label'=>'Архив', 'url'=>array('/tickets/archive')),
 				array('label'=>'Rights', 'url'=>array('/rights')),
 				//array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				//array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
