@@ -47,6 +47,10 @@ class StockController extends CController
             ->from('bugs')
             ->where($condition)
             ->queryAll();
+        foreach ($query as &$element ){
+             $element['id_client'] = Tickets::getFullFio($element['id_client']);
+             $element['id_employee'] = Tickets::getUserFullFio($element['id_employee']); 
+        }
          return $query;
     }
 
@@ -100,7 +104,64 @@ class StockController extends CController
           return FALSE;
     }
 
+public function sendEmail($commentData){
+        $emailsToSend = array();
+        $queryCommentsMail = Yii::app()->db->createCommand()
+            ->select('user_email, creator_id')
+            ->from('tbl_comments')
+            ->where('owner_id = ' . $commentData['owner_id'])
+            ->queryAll();
 
+        foreach ($queryCommentsMail as $mail) {
+            
+            if($mail['user_email'] == NULL){
+                
+                $queryEmployeeEmail = Yii::app()->db->createCommand()
+                    ->select('email')
+                    ->from('tbl_users')
+                    ->where('id = ' . $mail['creator_id'])
+                    ->queryRow();
+
+                if(!in_array($mail['user_email'], $emailsToSend)){
+                    $emailsToSend[] = $queryEmployeeEmail['email'];
+                } 
+                  
+            }
+            
+            else{
+                
+                if(!in_array($mail['user_email'], $emailsToSend)){
+                    $emailsToSend[] = $mail['user_email'];
+                }
+
+            }
+
+        }
+                
+        $queryCreatorMail = Yii::app()->db->createCommand()
+            ->select('id_creator, id_client')
+            ->from('bugs')
+            ->where('id = ' . $commentData['owner_id'])
+            ->queryRow();
+        
+        if (!empty($queryCreatorMail['id_creator'])) {
+            $creatorEmail = Tickets::getCreatorEmail($queryCreatorMail['id_creator']);
+            if (!in_array($creatorEmail, $emailsToSend)) {
+                $emailsToSend[] = $creatorEmail;
+            }
+        }
+        else {
+            $creatorEmail = Tickets::getEmail($queryCreatorMail['id_client']);
+            if (!in_array($creatorEmail, $emailsToSend)) {
+                $emailsToSend[] = $creatorEmail;
+            }
+        }
+
+        foreach ($emailsToSend as $email) {
+            $message = 'К тикету № ' . $commentData['owner_id'] . ' добавлен новый комментарий.';
+            mail($email,'Новый комментарий ', $message);
+        }
+}
 
     /**
      * @param array
@@ -109,23 +170,9 @@ class StockController extends CController
      */
  public function addComment($commentData)
     {
-      
-        // $model=new Comment;
-        // if(isset($commentData))
-        // {
-        //     $model->owner_name =$commentData['owner_name'];
-        //     $model->owner_id = $commentData['owner_id'];
-        //     $model->user_name = $commentData['user_name'];
-        //     $model->user_email = $commentData['user_email'];
-        //     $model->create_time = $commentData['create_time'];
-        //     $model->comment_text = $commentData['comment_text'];
-        //     if($model->save()){
-        //         return TRUE;
-        //     }
-        // }
-        //   return FALSE;
         $query = Yii::app()->db->createCommand();
         $query->insert('tbl_comments', $commentData);
+        $this->sendEmail($commentData);
         return TRUE;
     }
 

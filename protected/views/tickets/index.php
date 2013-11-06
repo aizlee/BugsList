@@ -5,23 +5,23 @@
 
 if (Yii::app()->controller->getAction()->getId()=='index'){ 
 	$this->menu=array(
-		array('label'=>'Create Bugs', 'url'=>array('create', 'addClient')),
-		array('label'=>'Мои баги', 'url'=>array('myBugs')),
-		array('label'=>'Архив багов', 'url'=>array('archive')),
+		array('label'=>'Оформить заявк', 'url'=>array('create', 'addClient')),
+		array('label'=>'Мои заявки', 'url'=>array('myBugs')),
+		array('label'=>'Архив', 'url'=>array('archive')),
 	);
 }
 
 if (Yii::app()->controller->getAction()->getId()=='myBugs'){
 	$this->menu=array(
-		array('label'=>'Create Bugs', 'url'=>array('create', 'addClient')),
-		array('label'=>'Список багов', 'url'=>array('index')),
+		array('label'=>'Оформить заявку', 'url'=>array('create', 'addClient')),
+		array('label'=>'Список всех заявок', 'url'=>array('index')),
 	);
 }
 
 if (Yii::app()->controller->getAction()->getId()=='archive'){
 	$this->menu=array(
-		array('label'=>'Список активных багов', 'url'=>array('index')),
-		array('label'=>'Мои баги', 'url'=>array('myBugs')),
+		array('label'=>'Список активных заявок', 'url'=>array('index')),
+		array('label'=>'Мои заявки', 'url'=>array('myBugs')),
 	);
 }
 ?>

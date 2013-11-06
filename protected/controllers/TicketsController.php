@@ -18,12 +18,12 @@ class TicketsController extends RController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','myBugs','completeBug','getBug','archive','sendMail','admin',
-					 'addToArchive', 'returnToWork', 'imageUpload', 'imageList', 'fileUpload', 'addClient'),
+					 'addToArchive', 'returnToWork', 'imageUpload', 'imageList', 'fileUpload', 'addClient','view'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -39,8 +39,10 @@ class TicketsController extends RController
 
 	public function actionView($id)
 	{
+		$model=$this->loadModel($id);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'dataProvider'=>$model->search('view',$id),
+			'model'=>$model,
 		));
 	}
 	

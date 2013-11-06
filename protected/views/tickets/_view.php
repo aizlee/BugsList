@@ -110,9 +110,7 @@
 		</div>
 
 		<div class="buttons">
-		<?php
-		switch ($data['status']) {
-			case '0':
+		<?php if($data['status']==0){
 				$this->widget('bootstrap.widgets.TbButton', array(
 				    //'buttonType'=>'button',
 					'label'=>'Взять баг',
@@ -125,9 +123,13 @@
 				    'htmlOptions'=>array('confirm'=>'Подтвердить?',
 				    		'title'=>'Взять баг', 'id'=> 'getButton'),
 				));
-				break;		
+			}?>
+
+		<?php if ($data['id_employee'] == Yii::app()->user->id):?>	
+		<?php
+		switch ($data['status']) {	
 			case '1':
-				if (Yii::app()->controller->getAction()->getId()=='myBugs'){
+				if ((Yii::app()->controller->getAction()->getId()=='myBugs')||(Yii::app()->controller->getAction()->getId()=='view')){
 					$this->widget('bootstrap.widgets.TbButton', array(
 						'label'=>'Завершить работу с багом',
 					    'type'=>'primary', 
@@ -140,7 +142,7 @@
 				}
 					break;
 			case '2':
-				if (Yii::app()->controller->getAction()->getId()=='myBugs'){
+				if ((Yii::app()->controller->getAction()->getId()=='myBugs')||(Yii::app()->controller->getAction()->getId()=='view')){
 					$this->widget('bootstrap.widgets.TbButton', array(
 						'label'=>'Отправить E-mail',
 					    'type'=>'primary', 
@@ -154,7 +156,7 @@
 				break;
 
 			case '3':
-				if (Yii::app()->controller->getAction()->getId()=='myBugs'){
+				if ((Yii::app()->controller->getAction()->getId()=='myBugs')||(Yii::app()->controller->getAction()->getId()=='view')){
 					$this->widget('bootstrap.widgets.TbButton', array(
 						'label'=>'Исправлено',
 				   		 'size'=>'small', 
@@ -178,6 +180,7 @@
 				break;
 		}
 		 ?>
+		 <?php endif ?>
 		 </div>
 		</div>
 </div>

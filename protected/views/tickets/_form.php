@@ -68,16 +68,16 @@ Yii::import('ext.imperaviRedactorWidget.ImperaviRedactorWidget');
                 'thumbLinkClass'=>'athumbnail', //Класс по-умолчанию для ссылки на полное изображение вокруг thumbnail
                 'thumbClass'=>'thumbnail pull-left', //Класс по-умолчанию для  thumbnail
                 'defaultUplthumb'=>true, //Вставлять по-умолчанию после загрузки превью? если нет - полное изображение    
-      	'fileUpload'=>Yii::app()->createUrl('bugs/fileUpload',array(
+      	'fileUpload'=>Yii::app()->createUrl('tickets/fileUpload',array(
             'attr'=>$attribute
         )),
         'fileUploadErrorCallback'=>new CJavaScriptExpression(
             'function(obj,json) { alert(json.error); }'
         ),
-        'imageUpload'=>Yii::app()->createUrl('bugs/imageUpload',array(
+        'imageUpload'=>Yii::app()->createUrl('tickets/imageUpload',array(
             'attr'=>$attribute
         )),
-        'imageGetJson'=>Yii::app()->createUrl('bugs/imageList',array(
+        'imageGetJson'=>Yii::app()->createUrl('tickets/imageList',array(
             'attr'=>$attribute
         )),
         'imageUploadErrorCallback'=>new CJavaScriptExpression(

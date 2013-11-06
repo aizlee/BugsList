@@ -8,6 +8,7 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
+	'defaultController'=>'tickets',
 	'name'=>'My Web Application',
        /* 'aliases' => array(
                     'bootstrap' => 'application.modules.bootstrap',

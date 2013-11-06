@@ -40,11 +40,15 @@ class Tickets extends CActiveRecord
 	}
 
 
-	public function search($currentAction)
+	public function search($currentAction,$id=NULL)
 	{
 		$condition = '';
 		$ord = '';
-		if ($currentAction != 'archive'){
+		if ($currentAction == 'view'){
+			$condition = 'id = '.$id;
+		}
+
+		elseif ($currentAction != 'archive'){
 		 	$condition = 'status < 4';
 		 	$ord = 'status asc ,receive_date asc';
 		 	if($currentAction == 'myBugs'){
@@ -134,6 +138,38 @@ class Tickets extends CActiveRecord
 			->where('id = ' . $id)
 		    ->queryRow();
 			return $query['email'];
+	}
+
+	public function sendEmail()
+	{
+        $emailsToSend = array();
+
+        $queryCommentsMail = Yii::app()->db->createCommand()
+            ->select('user_email')
+            ->from('tbl_comments')
+            ->where('owner_id = ' . $commentData['owner_id'])
+            ->queryAll();
+
+        $emailsToSend = $queryCommentsMail;
+                
+        $queryCreatorMail = Yii::app()->db->createCommand()
+            ->select('id_creator, id_client')
+            ->from('bugs')
+            ->where('id = ' . $commentData['owner_id'])
+            ->queryRow();
+        
+        if (!empty($queryCreatorMail['id_creator'])) {
+            $emailToSend[] = Tickets::getCreatorEmail($queryCreatorMail['id_creator']);
+        }
+        else {
+            $emailsToSend[] = Tickets::getEmail($queryCreatorMail['id_client']);
+        }
+
+        foreach ($emailsToSend as $email) {
+            $message = 'К тикету № ' . $commentData['owner_id'] . ' добавлен новый комментарий.';
+            mail($email,'Новый комментарий ', $message);
+        }
+
 	}
 
 	public function getClient()
