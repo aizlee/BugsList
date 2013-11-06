@@ -8,7 +8,7 @@
 	<div class="info">
 		<div class="item">
 			<label>№:</label>	
-			<p><?php echo CHtml::encode(CHtml::encode($data['id'])); ?></p>
+			<p><?php echo CHtml::link(CHtml::encode($data['id']), array('view', 'id'=>$data['id'])); ?></p>
 		</div>
 
 		<div class="item imageStatus">
